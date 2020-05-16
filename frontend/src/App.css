@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif !important;
 }
 
 a {
@@ -29,8 +29,15 @@ a {
   padding-left: 140px;
 }
 
+.submit-button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 @media screen and (max-width: 1200px) {
   .label-right {
     padding-left: 0;
   }
 }
+
