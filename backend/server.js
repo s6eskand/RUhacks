@@ -11,7 +11,8 @@ const PORT = 4000;
 app.use(cors());
 app.use(bodyParser.json())
 
-let Calendar = require('./app.model')
+let Calendar = require('./database/calendar.model');
+let Info = require('./database/info.model');
 
 mongoose.connect('mongodb://127.0.0.1:27017/RUhacks', {useNewUrlParser: true});
 const connection = mongoose.connection;
@@ -20,7 +21,32 @@ connection.once('open', () => {
     console.log('mongoDB connection established')
 })
 
-appRoutes.route('/').get((req, res) => {
+// API routes for Info Collection
+appRoutes.route('/info').get((req, res) => {
+    Info.find((err, info) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.json(info)
+        }
+    })
+});
+
+appRoutes.route('/info/create').post((req, res) => {
+    let generalInfo = new Info(req.body);
+
+    generalInfo.save()
+        .then(info => {
+            res.status(200).json({"info": "Info submitted successfully"})
+        })
+        .catch(err => {
+            res.status(400).send('error sending info')
+        });
+})
+
+// API routes for Calendar collection
+appRoutes.route('/calendar').get((req, res) => {
     Calendar.find((err, calendar) => {
         if (err) {
             console.log(err);
@@ -31,7 +57,7 @@ appRoutes.route('/').get((req, res) => {
     })
 })
 
-appRoutes.route('/create').post((req, res) => {
+appRoutes.route('/calendar/create').post((req, res) => {
     let Event = new Calendar(req.body);
     Event.save()
         .then(calendar => {
@@ -44,7 +70,7 @@ appRoutes.route('/create').post((req, res) => {
 
 // add edit route (post request to server)
 
-appRoutes.route('/update/:id').post((req, res) => {
+appRoutes.route('/calendar/update/:id').post((req, res) => {
     Calendar.findById(req.params.id, (err, app) => {
         if (!app) {
             res.status(404).send('data not found');
@@ -67,7 +93,7 @@ appRoutes.route('/update/:id').post((req, res) => {
 })
 
 // get specific calendar event (get request)
-appRoutes.route ('/:id').get((req, res) => {
+appRoutes.route('/calendar/:id').get((req, res) => {
     let id = req.params.id;
 
     Calendar.findById(id, (err, calendar) => {
