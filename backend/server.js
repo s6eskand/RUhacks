@@ -56,7 +56,7 @@ appRoutes.route('/update/:id').post((req, res) => {
             Event.isComplete = req.body.isComplete;
 
             Event.save(app)
-                .then( => {
+                .then(Event => {
                     res.json("Event Updated")
                 })
                 .catch(err => {
@@ -67,22 +67,21 @@ appRoutes.route('/update/:id').post((req, res) => {
 })
 
 // get specific calendar event (get request)
-appRoutes.route ('/:id').get((req, req))
-let id = req.params.id;
+appRoutes.route ('/:id').get((req, res) => {
+    let id = req.params.id;
 
-Calendar.findById(id, (err, calendar)) => {
-    if (err) {
-        console.log (err);
-    }
-    else{
-        res.json(calendar);
-    }
+    Calendar.findById(id, (err, calendar) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.json(calendar);
+        }
+    })
 })
 
 app.use('/api', appRoutes);
 
 app.listen(PORT, () => {
     console.log('server running on port: ' + PORT);
-
-  //done
 })
