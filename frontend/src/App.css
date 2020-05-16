@@ -11,7 +11,7 @@ a {
   cursor: pointer;
 }
 
-.center-text {
+.center-text-column {
   display: flex;
   justify-content: center;
   flex-direction: column;
