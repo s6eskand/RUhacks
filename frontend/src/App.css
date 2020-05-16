@@ -24,3 +24,13 @@ a {
   flex-direction: row;
   text-align: center;
 }
+
+.label-right {
+  padding-left: 140px;
+}
+
+@media screen and (max-width: 1200px) {
+  .label-right {
+    padding-left: 0;
+  }
+}
