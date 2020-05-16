@@ -10,3 +10,10 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+
+.center-text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
