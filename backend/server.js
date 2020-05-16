@@ -46,7 +46,7 @@ appRoutes.route('/create').post((req, res) => {
 
 appRoutes.route('/update/:id').post((req, res) => {
     Calendar.findById(req.params.id, (err, app) => {
-        if (!todo) {
+        if (!app) {
             res.status(404).send('data not found');
         }
         else {
@@ -55,8 +55,8 @@ appRoutes.route('/update/:id').post((req, res) => {
             Event.priority = req.body.priority;
             Event.isComplete = req.body.isComplete;
 
-            Event.save()
-                .then(todo => {
+            Event.save(app)
+                .then( => {
                     res.json("Event Updated")
                 })
                 .catch(err => {
@@ -67,16 +67,22 @@ appRoutes.route('/update/:id').post((req, res) => {
 })
 
 // get specific calendar event (get request)
-/*
-* appRoute of '/:id' => get((req, res))
-* set id variable using 'let' equal to req.params.id
-* Event.findById => (err, calendar)
-* catch error and return to console
-* return calendar object as json (res.json(calendar))
-* */
+appRoutes.route ('/:id').get((req, req))
+let id = req.params.id;
+
+Calendar.findById(id, (err, calendar)) => {
+    if (err) {
+        console.log (err);
+    }
+    else{
+        res.json(calendar);
+    }
+})
 
 app.use('/api', appRoutes);
 
 app.listen(PORT, () => {
     console.log('server running on port: ' + PORT);
+
+  //done
 })
