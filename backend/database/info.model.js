@@ -3,6 +3,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Info = new Schema({
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type:  String,
+        required: true
+    },
     sleepStart: {
         type: String,
         required: true
