@@ -43,21 +43,21 @@ appRoutes.route('/create').post((req, res) => {
 })
 
 // add edit route (post request to server)
-/*
-* todoRoutes.route('/update/:id').post((req, res) => {
-    Todo.findById(req.params.id, (err, todo) => {
+
+appRoutes.route('/update/:id').post((req, res) => {
+    Calendar.findById(req.params.id, (err, app) => {
         if (!todo) {
             res.status(404).send('data not found');
         }
         else {
-            todo.description = req.body.description;
-            todo.responsible = req.body.responsible;
-            todo.priority = req.body.priority;
-            todo.isComplete = req.body.isComplete;
+            Event.description = req.body.description;
+            Event.responsible = req.body.responsible;
+            Event.priority = req.body.priority;
+            Event.isComplete = req.body.isComplete;
 
-            todo.save()
+            Event.save()
                 .then(todo => {
-                    res.json("Todo Updated")
+                    res.json("Event Updated")
                 })
                 .catch(err => {
                     res.status(400).send("update failed")
@@ -65,7 +65,6 @@ appRoutes.route('/create').post((req, res) => {
         }
     })
 })
-* */
 
 // get specific calendar event (get request)
 /*
