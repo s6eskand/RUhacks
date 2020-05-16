@@ -17,3 +17,10 @@ a {
   flex-direction: column;
   text-align: center;
 }
+
+.center-text-row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+}
