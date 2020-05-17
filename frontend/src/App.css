@@ -35,9 +35,41 @@ a {
   text-align: center;
 }
 
+.full-calendar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) scale(2.5);
+}
+
 @media screen and (max-width: 1200px) {
   .label-right {
     padding-left: 0;
+  }
+
+  .full-calendar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) scale(1.75);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .full-calendar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%) scale(1.25);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .full-calendar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
   }
 }
 
