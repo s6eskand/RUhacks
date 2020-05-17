@@ -1,16 +1,15 @@
-import React, {Component} from 'react'
+import React, { useState } from 'react';
+import Calendar from 'react-calendar';
 
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
+function MyApp() {
+  const [value, onChange] = useState(new Date());
 
-export default class EventCalendar extends Component  {
-
-
-    render(){
-        return (
-            <FullCalendar />
-
-        )
-    }
+  return (
+    <div>
+      <Calendar
+        onChange={onChange}
+        value={value}
+      />
+    </div>
+  );
 }
-
