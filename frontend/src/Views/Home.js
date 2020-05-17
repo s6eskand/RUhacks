@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Form } from 'semantic-ui-react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const sleepStart = [
     { key: '0', text: '8:00 PM', value: '20:00' },
@@ -281,7 +282,7 @@ class Home extends React.Component {
                                 onChange={this.handleSchoolDay5Change}
                             />
                         </Form.Group>
-                        <Form.Button className="submit-button" onClick={this.handleSubmit}>Submit</Form.Button>
+                        <Link to="/calendar"><Form.Button className="submit-button" onClick={this.handleSubmit}>Submit</Form.Button></Link>
                     </Form>
                 </Container>
             </div>
